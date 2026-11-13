@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block title %}Все книги{% endblock %}
+
+{% block content %}
+<h2>Каталог</h2>
+<div class="books">
+    {% for book in books %}
+    <a class="book-card" href="{% url 'book_detail' book.id %}">
+        <h3>{{ book.title }}</h3>
+        <p class="author">{{ book.author }}</p>
+        <p class="price">{{ book.price|format_currency }}</p>
+    </a>
+    {% empty %}
+    <p>Книг пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}

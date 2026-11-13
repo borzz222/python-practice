@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<article class="book-detail">
+    <h2>{{ book.title }}</h2>
+    <p><b>Автор:</b> {{ book.author }}</p>
+    <p><b>Год:</b> {{ book.year }}</p>
+    <p class="price">{{ book.price|format_currency }}</p>
+    <a href="{% url 'book_list' %}">← Назад к списку</a>
+</article>
+{% endblock %}
